@@ -332,20 +332,13 @@ $(function () {
     window.foldSetting = '{{.FoldSetting}}';
     if (foldSetting == 'open' || foldSetting == 'first') {
         $('#handlerMenuShow').find('span').text('{{i18n .Lang "doc.fold"}}');
-        $('#handlerMenuShow').find('i').attr("class","fa fa-angle-down");
         if (foldSetting == 'open') {
+            $('#handlerMenuShow').find('i').attr("class","fa fa-angle-down");
             window.jsTree.jstree().open_all();
         }
         if (foldSetting == 'first') {
+            $('#handlerMenuShow').find('i').attr("class","fa fa-angle-left");
             window.jsTree.jstree('close_all');
-            var $target = $('.jstree-container-ul').children('li').filter(function(index){
-                if($(this).attr('aria-expanded')==false||$(this).attr('aria-expanded')){
-                    return $(this);
-                }else{
-                    delete $(this);
-                }
-            });
-            $target.children('i').trigger('click');
         }
     } else {
         menuControl = false;
