@@ -190,7 +190,7 @@ function loadDocument($url, $id, $callback) {
                 }
                 renderPage(data);
 
-                loadCopySnippets();
+                // loadCopySnippets();
                 events.trigger('article.open', { $url: $url, $id: $id });
 
                 return false;
@@ -206,7 +206,7 @@ function loadDocument($url, $id, $callback) {
                     data.body = $callback(data.body);
                 }
                 renderPage(data);
-                loadCopySnippets();
+                // loadCopySnippets();
                 events.data($id, data);
                 events.trigger('article.open', { $url: $url, $id: $id });
             } else if ($res.errcode === 6000) {
@@ -439,7 +439,7 @@ $(function () {
             $("#btnSubmitComment").button("reset");
         }
     });
-    loadCopySnippets();
+    // loadCopySnippets();
 });
 
 function loadCopySnippets() {
