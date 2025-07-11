@@ -1,0 +1,25 @@
+FROM mindoc-org/mindoc:1.0
+
+# 切换默认shell为bash
+SHELL ["/bin/bash", "-c"]
+
+WORKDIR /mindoc
+
+# 文件复制
+COPY mindoc_linux_amd64 /mindoc/
+COPY start.sh /mindoc/
+# 文件夹复制
+COPY lib /mindoc/lib
+COPY conf /mindoc/__default_assets__/conf
+COPY static /mindoc/__default_assets__/static
+COPY views /mindoc/__default_assets__/views
+COPY uploads /mindoc/__default_assets__/uploads
+
+# 测试 calibre 是否可正常使用
+RUN ebook-convert --version
+
+EXPOSE 8181/tcp
+
+RUN chmod +x /mindoc/start.sh
+
+ENTRYPOINT ["/bin/bash", "/mindoc/start.sh"]

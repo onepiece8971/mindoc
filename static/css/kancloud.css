@@ -547,6 +547,16 @@ table>tbody>tr:hover {
     margin-right: auto !important
 }
 
+.manual-article .article-content #article-title {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 400;
+    text-align: left;
+    line-height: 42px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 @media screen and (max-width: 840px) {
     .manual-article .article-content {
         min-width: inherit;

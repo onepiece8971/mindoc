@@ -49,6 +49,7 @@ COPY --from=build /go/src/github.com/mindoc-org/mindoc/conf /mindoc/__default_as
 COPY --from=build /go/src/github.com/mindoc-org/mindoc/static /mindoc/__default_assets__/static
 COPY --from=build /go/src/github.com/mindoc-org/mindoc/views /mindoc/__default_assets__/views
 COPY --from=build /go/src/github.com/mindoc-org/mindoc/uploads /mindoc/__default_assets__/uploads
+COPY calibre-8.6.0-x86_64.txz /tmp/calibre-cache/calibre-x86_64.txz
 
 RUN chmod a+r /usr/share/fonts/win/simsun.ttc
 
@@ -83,7 +84,6 @@ RUN apt-get install -y --no-install-recommends \
         libglx0 libegl1 libnss3 libxcomposite1 libxkbcommon0 libxdamage1 libxrandr-dev libopengl0 libxtst6 libasound2t64 libxkbfile1\
         wget xz-utils && \
     mkdir -p /tmp/calibre-cache /opt/calibre && \
-    wget -O /tmp/calibre-cache/calibre-x86_64.txz -c https://download.calibre-ebook.com/7.26.0/calibre-7.26.0-x86_64.txz  --no-check-certificate && \
     tar xJof /tmp/calibre-cache/calibre-x86_64.txz -C /opt/calibre && \
     rm -rf /tmp/calibre-cache && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
