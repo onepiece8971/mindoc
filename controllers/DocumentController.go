@@ -206,31 +206,6 @@ func (c *DocumentController) Read() {
 	res := getTreeRecursive(treeJson, 0)
 	flat := make([]DocumentTreeFlatten, 0)
 	Flatten(res, &flat)
-	var index int
-	for i, v := range flat {
-		if v.Identify == id {
-			index = i
-		}
-	}
-	var PrevName, PrevPath, NextName, NextPath string
-	if index == 0 {
-		c.Data["PrevName"] = ""
-		PrevName = ""
-	} else {
-		c.Data["PrevPath"] = identify + "/" + flat[index-1].Identify
-		c.Data["PrevName"] = flat[index-1].DocumentName
-		PrevPath = identify + "/" + flat[index-1].Identify
-		PrevName = flat[index-1].DocumentName
-	}
-	if index == len(flat)-1 {
-		c.Data["NextName"] = ""
-		NextName = ""
-	} else {
-		c.Data["NextPath"] = identify + "/" + flat[index+1].Identify
-		c.Data["NextName"] = flat[index+1].DocumentName
-		NextPath = identify + "/" + flat[index+1].Identify
-		NextName = flat[index+1].DocumentName
-	}
 
 	doc.IncrViewCount(doc.DocumentId)
 	doc.ViewCount = doc.ViewCount + 1
@@ -251,7 +226,7 @@ func (c *DocumentController) Read() {
 		data.DocId = doc.DocumentId
 		data.DocIdentify = doc.Identify
 		data.DocTitle = doc.DocumentName
-		data.Body = doc.Release + "<div class='wiki-bottom-left'>"+ i18n.Tr(c.Lang, "doc.prev") + "： <a href='/docs/" + PrevPath + "' rel='prev'>" + PrevName + "</a><br />" + i18n.Tr(c.Lang, "doc.next") + "： <a href='/docs/" + NextPath + "' rel='next'>" + NextName + "</a><br /></div>"
+		data.Body = doc.Release
 		data.Title = doc.DocumentName + " - Powered by MinDoc"
 		data.Version = doc.Version
 		data.ViewCount = doc.ViewCount
@@ -283,7 +258,7 @@ func (c *DocumentController) Read() {
 	c.Data["Model"] = bookResult
 	c.Data["Result"] = template.HTML(tree)
 	c.Data["Title"] = doc.DocumentName
-	c.Data["Content"] = template.HTML(doc.Release + "<div class='wiki-bottom-left'>"+ i18n.Tr(c.Lang, "doc.prev") + "： <a href='/docs/" + PrevPath + "' rel='prev'>" + PrevName + "</a><br />" + i18n.Tr(c.Lang, "doc.next") + "： <a href='/docs/" + NextPath + "' rel='next'>" + NextName + "</a><br /></div>")
+	c.Data["Content"] = template.HTML(doc.Release)
 	c.Data["ViewCount"] = doc.ViewCount
 	c.Data["FoldSetting"] = "closed"
 	if bookResult.Editor == EditorCherryMarkdown {
