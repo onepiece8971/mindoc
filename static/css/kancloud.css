@@ -553,6 +553,7 @@ table>tbody>tr:hover {
     font-weight: 400;
     text-align: left;
     line-height: 42px;
+    padding: 0 4px;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -560,6 +561,8 @@ table>tbody>tr:hover {
 @media screen and (max-width: 840px) {
     .manual-article .article-content {
         min-width: inherit;
+        padding: 10px 5px;
+        max-width: 100%;
     }
 }
 
