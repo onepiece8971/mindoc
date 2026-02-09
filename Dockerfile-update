@@ -1,4 +1,4 @@
-FROM mindoc-org/mindoc:1.0
+FROM mindoc-org/mindoc:1.1
 
 # 切换默认shell为bash
 SHELL ["/bin/bash", "-c"]
