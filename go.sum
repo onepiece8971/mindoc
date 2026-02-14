@@ -208,8 +208,8 @@ github.com/lifei6671/gocaptcha v0.2.0 h1:CwMjGitq5MsYtWODQhlphdl7WhDdD243y1O2d3l
 github.com/lifei6671/gocaptcha v0.2.0/go.mod h1:mcUWn1eB+kHOBHLQdmWAQ83bhEGrFTnGMqRCY7sFgUc=
 github.com/mailru/easyjson v0.7.7 h1:UGYAvKxe3sBsEDzO8ZeWOSlIQfWFlxbzLZe7hwFURr0=
 github.com/mailru/easyjson v0.7.7/go.mod h1:xzfreul335JAWq5oZzymOObrkdz5UnU4kGfJJLY9Nlc=
-github.com/mark3labs/mcp-go v0.38.0 h1:E5tmJiIXkhwlV0pLAwAT0O5ZjUZSISE/2Jxg+6vpq4I=
-github.com/mark3labs/mcp-go v0.38.0/go.mod h1:T7tUa2jO6MavG+3P25Oy/jR7iCeJPHImCZHRymCn39g=
+github.com/mark3labs/mcp-go v0.43.2 h1:21PUSlWWiSbUPQwXIJ5WKlETixpFpq+WBpbMGDSVy/I=
+github.com/mark3labs/mcp-go v0.43.2/go.mod h1:YnJfOL382MIWDx1kMY+2zsRHU/q78dBg9aFb8W6Thdw=
 github.com/mattn/go-runewidth v0.0.13 h1:lTGmDsbAYt5DmK6OnoV7EuIF1wEIFAcxld6ypU4OSgU=
 github.com/mattn/go-runewidth v0.0.13/go.mod h1:Jdepj2loyihRzMpdS35Xk/zdY8IAYHsh153qUoGf23w=
 github.com/mattn/go-sqlite3 v1.14.17 h1:mCRHCLDUBXgpKAqIKsaAaAsrAlbkeomtRFKXh2L6YIM=

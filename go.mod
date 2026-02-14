@@ -1,6 +1,8 @@
 module github.com/mindoc-org/mindoc
 
-go 1.23
+go 1.23.0
+
+toolchain go1.24.5
 
 require (
 	github.com/PuerkitoBio/goquery v1.8.0
@@ -12,7 +14,7 @@ require (
 	github.com/kardianos/service v1.2.1
 	github.com/lib/pq v1.10.5
 	github.com/lifei6671/gocaptcha v0.2.0
-	github.com/mark3labs/mcp-go v0.38.0
+	github.com/mark3labs/mcp-go v0.43.2
 	github.com/mattn/go-runewidth v0.0.13
 	github.com/mattn/go-sqlite3 v1.14.17
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
