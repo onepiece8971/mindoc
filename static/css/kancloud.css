@@ -1366,17 +1366,52 @@ table>tbody>tr:hover {
      * 此处统一放大字号与行高，仅作用于窄屏，桌面端不受影响。
      */
 
-    /* 抽屉内 tab 头部：标签字号与正常字重，展开/折叠文字同步放大；头部高度保持 31px */
+    /*
+     * 抽屉内 tab 头部：与 banner（54px）等高，使抽屉顶边与 banner 持平
+     * 标签 16px + 正常字重；内容垂直居中；目录内容起点同步下移
+     */
+    .m-manual.manual-reader .manual-tab .tab-navg {
+        height: 54px;
+        box-sizing: border-box
+    }
+
     .m-manual.manual-reader .manual-tab .tab-navg .navg-item {
-        font-size: 16px
+        font-size: 16px;
+        height: 53px;
+        line-height: 53px;
+        /* 与 banner 内汉堡图标的位置对齐（banner 图标为 left:10 / top:20） */
+        padding-top: 2px;
+        padding-left: 10px;
+        padding-right: 9px
+    }
+
+    .m-manual.manual-reader .manual-tab .tab-navg .navg-item.active {
+        height: 54px;
+        /* 选中项有 1px 左边框，padding 预留后图标仍落在 left:10 */
+        padding-left: 9px;
+        padding-right: 8px
     }
 
     .m-manual.manual-reader .manual-tab .tab-navg .navg-item .text {
         font-weight: 400
     }
 
+    .m-manual.manual-reader .manual-tab .tab-item {
+        top: 54px
+    }
+
+    /* 「展开/折叠」在模板里带内联 padding，用 flex 居中并覆盖内联值 */
+    .m-manual.manual-reader .manual-tab .tab-navg #handlerMenuShow {
+        height: 54px;
+        padding: 0 5px !important;
+        display: flex !important;
+        align-items: center
+    }
+
     .m-manual.manual-reader .manual-tab .tab-navg #handlerMenuShow > span {
-        font-size: 14px
+        font-size: 14px;
+        padding-top: 0 !important;
+        line-height: 1
     }
 
     /* 抽屉内的目录与搜索结果保持同一字号 */
@@ -1433,5 +1468,20 @@ table>tbody>tr:hover {
         line-height: 44px;
         padding-top: 0;
         padding-bottom: 0
+    }
+}
+
+/*
+ * 768–840px（平板区间）下，Bootstrap 的 .container-fluid > .navbar-header
+ * 不再有 -15px 外边距，banner 汉堡图标整体右移 15px。
+ * 这里让抽屉 tab 图标的水平位置跟随，保持与 banner 图标重合。
+ */
+@media screen and (min-width: 768px) and (max-width: 840px) {
+    .m-manual.manual-reader .manual-tab .tab-navg .navg-item {
+        padding-left: 25px
+    }
+
+    .m-manual.manual-reader .manual-tab .tab-navg .navg-item.active {
+        padding-left: 24px
     }
 }
