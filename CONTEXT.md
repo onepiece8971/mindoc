@@ -25,7 +25,7 @@ _Avoid_: 目录, 小目录, 右侧目录
 ### 阅读页移动端
 
 **Drawer（抽屉）**：
-窄屏下由页头菜单按钮唤出的覆盖层，承载 Catalog 与搜索，点击遮罩关闭。
+窄屏下由页头图标或书名唤出、由同一图标、目录 tab、遮罩或选中 Catalog Item 收起的覆盖层，承载 Catalog 与搜索。
 _Avoid_: 侧边栏, 侧栏, sidebar, 菜单
 
 **Catalog Item（目录项）**：

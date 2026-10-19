@@ -288,6 +288,11 @@ function handleEvent(event) {
     }
 }
 
+// 与 kancloud.css 中的移动端断点（max-width: 840px）保持一致
+function isMobileReader() {
+    return !!(window.matchMedia && window.matchMedia("(max-width: 840px)").matches);
+}
+
 $(function () {
     window.addEventListener('keydown', handleEvent)
     updateEditLink(window.currentDocumentId);
@@ -432,7 +437,16 @@ $(function () {
         loadDocument(selected.node.a_attr.href, selected.node.id, selected.node.a_attr['data-version']);
     });
 
+    // 移动端抽屉：banner 图标点击切换开/关
     $("#slidebar").on("click", function () {
+        $(".m-manual").toggleClass('manual-mobile-show-left');
+    });
+    // 移动端点击书名也展开抽屉；桌面端保留跳转书籍首页
+    $(".manual-head .book-title").on("click", function (e) {
+        if (!isMobileReader()) {
+            return;
+        }
+        e.preventDefault();
         $(".m-manual").addClass('manual-mobile-show-left');
     });
     $(".manual-mask").on("click", function () {
@@ -453,8 +467,16 @@ $(function () {
 
     $(".navg-item[data-mode]").on("click", function () {
         var mode = $(this).data('mode');
+        var $manual = $(".m-manual");
+
+        // 已在目录视图时再点「目录」，收起抽屉（抽屉开关只在移动端存在）
+        if (mode === "view" && $manual.hasClass("manual-mode-view") && $manual.hasClass("manual-mobile-show-left")) {
+            $manual.removeClass("manual-mobile-show-left");
+            return;
+        }
+
         $(this).siblings().removeClass('active').end().addClass('active');
-        $(".m-manual").removeClass("manual-mode-view manual-mode-collect manual-mode-search").addClass("manual-mode-" + mode);
+        $manual.removeClass("manual-mode-view manual-mode-collect manual-mode-search").addClass("manual-mode-" + mode);
     });
 
     const input = document.getElementById('searchForm').querySelector('input');
