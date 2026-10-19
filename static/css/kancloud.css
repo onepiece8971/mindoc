@@ -554,6 +554,7 @@ table>tbody>tr:hover {
     text-align: left;
     line-height: 42px;
     padding: 0 4px;
+    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -569,6 +570,13 @@ table>tbody>tr:hover {
 .manual-article .article-content .article-body {
     min-height: 90px;
     padding: 5px;
+}
+
+/* Markdown 正文基字号：桌面与移动端统一 16px / 行高 1.6
+   比 .editormd-preview-container 的 14px 优先级更高（那个值此前覆盖了 .markdown-body 的 16px） */
+.m-manual .manual-article .article-content .article-body.markdown-body {
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 .manual-article .article-content .article-body .attach-list {
