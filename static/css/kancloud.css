@@ -1236,9 +1236,9 @@ table>tbody>tr:hover {
     }
 
     .m-manual.manual-reader .manual-left {
-        width: 80%;
-        max-width: 360px;
-        left: -80%;
+        width: 88%;
+        max-width: 400px;
+        left: -88%;
         top: 0;
         z-index: 4000
     }
@@ -1358,5 +1358,80 @@ table>tbody>tr:hover {
     .m-manual.manual-reader.manual-mobile-show-left .manual-mask {
         opacity: .3;
         z-index: 3000
+    }
+
+    /*
+     * 移动端目录（Catalog）可读性与触控优化
+     * 目录继承 .manual-reader 的 12px，行高固定 30px，均低于移动端常用下限。
+     * 此处统一放大字号与行高，仅作用于窄屏，桌面端不受影响。
+     */
+
+    /* 抽屉内 tab 头部：标签字号与正常字重，展开/折叠文字同步放大；头部高度保持 31px */
+    .m-manual.manual-reader .manual-tab .tab-navg .navg-item {
+        font-size: 16px
+    }
+
+    .m-manual.manual-reader .manual-tab .tab-navg .navg-item .text {
+        font-weight: 400
+    }
+
+    .m-manual.manual-reader .manual-tab .tab-navg #handlerMenuShow > span {
+        font-size: 14px
+    }
+
+    /* 抽屉内的目录与搜索结果保持同一字号 */
+    .m-manual.manual-reader .manual-catalog,
+    .m-manual.manual-reader .manual-search .search-list a {
+        font-size: 15px
+    }
+
+    /* 行高需在 anchor / node / wholerow 三处同步，否则整行高亮会错位 */
+    .m-manual.manual-reader .jstree-default .jstree-anchor {
+        height: 44px;
+        line-height: 44px
+    }
+
+    .m-manual.manual-reader .jstree-default .jstree-node {
+        min-height: 44px;
+        line-height: 44px
+    }
+
+    .m-manual.manual-reader .jstree-default .jstree-wholerow {
+        height: 44px
+    }
+
+    /* 每级缩进略收窄以容纳更长的标题 */
+    .m-manual.manual-reader .jstree-default .jstree-node {
+        margin-left: 18px
+    }
+
+    /* 根节点归零避免整体右移 */
+    .m-manual.manual-reader #sidebar .jstree-container-ul > .jstree-node {
+        margin-left: 0
+    }
+
+    /* 字号变大后长标题会横向撑破抽屉，约束宽度并开启单行省略
+       29px = 24px 展开图标 + 5px 间隙，与 jstree 主题的省略号规则一致 */
+    .m-manual.manual-reader #sidebar .jstree-anchor {
+        width: calc(100% - 29px);
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+
+    /* 展开/折叠三角保持 24px，仅随变高的行垂直居中（图标是 anchor 的兄弟节点） */
+    .m-manual.manual-reader .jstree-default .jstree-node > .jstree-icon {
+        vertical-align: middle
+    }
+
+    /* 搜索结果行同步 44px；固定 275px 宽在变宽的抽屉里会右侧留白，改为撑满 */
+    .m-manual.manual-reader .manual-search .search-result {
+        width: 100%
+    }
+
+    .m-manual.manual-reader .manual-search .search-list a {
+        height: 44px;
+        line-height: 44px;
+        padding-top: 0;
+        padding-bottom: 0
     }
 }
